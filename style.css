@@ -1,0 +1,55 @@
+.navbar-nav :hover{
+    color: palevioletred;
+}
+.img1{
+    background-image: url("3.jpg");
+    max-width: 100%;
+}
+
+.img2{
+    margin-left: 250px;
+}
+.bor{
+    border-radius: 2px;
+    width: 70px;
+    height: 30px;
+    margin-left: 420px;
+    padding-bottom: 0;
+    background-color:grey;
+    color: white;
+    text-align: center;
+}
+.ind{
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  td {
+    padding: 10px;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  
+  .img3{
+    
+    width: 90px;
+    height: 35px;
+
+}
+
+.footer-col ul li a:hover{
+    color: red;
+}
+
+ul{
+    list-style: none;
+}
+
+.card{
+    margin: auto;
+}
