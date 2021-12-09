@@ -1,5 +1,6 @@
-.navbar-nav :hover{
+.navbar :hover{
     color: palevioletred;
+  
 }
 .img1{
     background-image: url("3.jpg");
