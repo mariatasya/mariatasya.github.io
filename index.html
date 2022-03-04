@@ -1,154 +1,297 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Index</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>puskesmas</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
+  <style>
+    .mx-auto{
+      width: 1250px;
+    }
+    .card {
+      margin-top: 10px;
+    }
+    .card-footer {
+    padding:15px;
+    text-align: center;
+    margin-top: 100px;
+  }
+  </style>
   <body>
-    <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top text-dark justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-        <img src="1.png" alt="Logo" style="width:300px;" class="rounded-pill"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          <ul class="navbar-nav">
+        <a class="navbar-brand" href="#"><h3>PUSKESMAS</h3></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="https://fti.unai.edu/">FTI UNAI</a>
+              <a class="nav-link" href="index.html">Pasien</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="https://unai.edu/">Website Unai</a>
+              <a class="nav-link" href="dokter.html">Dokter</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Index</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="biodata.html">Biodata</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact_us.html">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="galery.html">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="lagu.html">Lagu</a>
+              <a class="nav-link" href="antrian.html">Antrian</a>
             </li>
           </ul>
-        
-        <a class="navbar-brand" href="#">
-          <img src="2.png" alt="Logo" style="width:300px;" class="rounded-pill"></a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </nav>
 
-    <div class="container">
-      <div class="col-sm-12 p-3">
-        <img class="img1" src="3.jpg" alt="backgrond">
-      </div>
+    <div id="app">
+      <div class="mx-auto">
+      <div class="card">
+        <div class="card-header text-black">Data Pasien</div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Jenis kelamin</th>
+                <th>Tanggal lahir</th>
+                <th>Email</th>
+                <th>No Handphone</th>
+                <th>Alamat</th>
+                <th>Keluhan</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr v-for="user in users">
+                <td>{{ user.id }}</td>
+                <td>{{ user.nama }}</td>
+                <td>{{ user.jenisKelamin }}</td>
+                <td>{{ user.tanggalLahir }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.noHp }}</td>
+                <td>{{ user.alamat }}</td>
+                <td>{{ user.keluhan }}</td>
+                <td><button class="btn btn-md btn-warning" v-on:click="getEdit(user)">Edit</button></td>
+                <td><button class="btn btn-danger" v-on:click="getDelete(user)">Delete</button></td>
+            </tr>
+        </li>
+    </table>
+
+    <button class="btn btn-md btn-primary" v-on:click="resetForm()">Buat Pengguna baru </button>
+ 
+    <div v-if="message" class="alert alert-success" role="alert">
+        {{ message }}
     </div>
-
-    <div class="img2">
-      <img src="fb.png">
-      <img src="tw.png">
-      <img style="width: 32px;" src="mail.png">
-      <img src="link.png"><br><br>
-      <p class="bor">About Tri</p>
-      <hr class="garis1" width="900" style="2">
-      </div>
-
-      <pre class="ind">
-        3 Indonesia di bawah merek ‘3’ adalah salah satu penyedia layanan telekomunikasi seluler terkemuka di Indonesia yang mengoperasikan jaringan nasional berlisensi 2G,
-        3G/WCDMA dan 4G LTE GSM. 3 menghadirkan pengalaman gaya hidup mobile yang didukung oleh teknologi 4.5G Pro yang lebih luas dan kuat di lebih dari 37.000 desa
-        di Sumatera, Kalimantan, Sulawesi, Jawa, Bali dan Lombok, melalui fiber optic yang membentang sepanjang 16.000 Km.
-
-        Seiring dengan keberadaannya di Indonesia sejak tahun 2007, 3 tumbuh menjadi mobile lifestyle provider. 95% pelanggan 3 adalah anak muda dengan gaya hidup digital
-        yang tinggi. Keberhasilan 3 Indonesia dibangun oleh komitmen untuk menghadirkan pengalaman dan nilai terbaik bagi pelanggan, juga semangat untuk memberdayakan
-        anak muda Indonesia
-
-    </pre><br>
-
-    <div class="container mt-3">            
-      <table class="table table-sm table-striped text-center">
-        <thead>
-          <tr>
-            <th class="bg-danger"></th>
-            <th class="bg-danger text-white">customer</th>
-            <th class="bg-danger"></th>
-          </tr>
-        </thead>
-          <tr>
-            <td></td>
-            <td>Twitter</td>
-            <td>@3CareIndonesia</td>
-          </tr>
-          <tr class="table-danger">
-            <td></td>
-            <td>Facebook Mesengger</td>
-            <td>3 Indonesia</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>Telegram</td>
-            <td>@TriIndonesiaCare_bot</td>
-          </tr>
-          <tr class="table-danger">
-            <td></td>
-            <td>Email</td>
-            <td>3care@three.co.id</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>Call Center</td>
-            <td>132 (dari kartu 3), atau nomor 089644000123 dari nomor/operator lain.         </td>
-          </tr>
-          <tr class="table-danger">
-            <td></td>
-            <td>Website </td>
-            <td>tri.co.id</td>
-          </tr>
-      </table>
-    </div>
-
-    <footer class="bg-dark text-white pt-5 pb-4">
-      <div class="container text-center text-md-left">
-          <div class="row text-center text-md-left">
-              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-              <h5>Mau akses seruya hidup?</h5>
-              <h5>download Bima+ sekarang</h5>
-              <ul>
-              <img class="img3" src="5.png"><img class="img3" src="6.png"><br>
-              
-                  <li><img src="7.png"><a href="#" class="text-white" style="text-decoration: none;"> PT Hutchison 3 Indonesia ©2018. </a></li>
-              </ul>
-              </div>
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h5>bantuan</h5>
-              <ul>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Informasi 3Care</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Syarat & Ketentuan</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Kebijakan Privasi</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Jangkauan</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Lokasi 3Store</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Waspada Penipuan</a></li>
-              </ul>
-          </div>
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-              <h5>Korporasi</h5>
-              <ul>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Tentang Tri</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Ruang Media</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">QOS</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">3Career</a></li>
-                  <li><a href="#" class="text-white" style="text-decoration: none;">Jaringan</a></li>
-              </ul>
-          </div>
-          </div>
-      </div>
-  </footer>
-
-
-
-  </body>
+  </div>
+</div>
+</div>
     
+<div class="mx-auto">
+  <div class="card">
+    <div class="card-header text-black">Masukan Data Anda</div>
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="nama" class="form-label">Nama:</label>
+        <input v-model="nama" type="name" class="form-control" id="nama" placeholder="Masukan nama" name="nama" required>
+      </div>
+      
+      <label for="jenisKelamin" class="form-label">Jenis Kelamin:</label>
+      <div class="form-check">
+        <input v-model="jenisKelamin" type="radio" class="form-check-input" id="jenisKelamin" name="optradio" value="Laki-laki" checked>
+        <label class="form-check-label" for="jenisKelamin">Laki laki</label>
+      </div>
+      <div class="form-check">
+        <input v-model="jenisKelamin" type="radio" class="form-check-input" id="jenisKelamin" name="optradio" value="Perempuan">
+        <label class="form-check-label" for="jenisKelamin">Perempuan</label>
+      </div>
+      
+      <div class="mb-3">
+        <label for="tanggalLahir" class="form-label">Tanggal Lahir:</label>
+        <input v-model="tanggalLahir" type="date" class="form-control" id="tanggalLahir" placeholder="" name="tanggalLahir" required>
+      </div>
+      
+      <label for="email" class="form-label">Email:</label>
+      <div class="input-group mb-3">
+        <input v-model="email" type="email" class="form-control" id="email" placeholder="Masukan Email" name="email">
+      </div>
+
+      <div class="mb-3">
+        <label for="noHp" class="form-label">No Handphone:</label>
+        <input v-model="noHp" type="number" class="form-control" id="noHp" placeholder="Masukan Nomor Handphone" name="noHp" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="alamat" class="form-label">Alamat:</label>
+        <input v-model="alamat" type="text" class="form-control" id="alamat" placeholder="Masukan Alamat Anda" name="alamat" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="keluhan" class="form-label">Keluhan:</label>
+        <input v-model="keluhan" type="text" class="form-control" id="keluhan" placeholder="Apa Yang Anda Keluhkan" name="keluhan" required>
+      </div>
+      
+      <hr class="mb-4">
+                  <button v-if="!editMode && !deleteMode" v-on:click="createUser" class="btn btn-primary btn-lg btn-block" type="submit">Daftar</button>
+                  <button v-if="editMode" v-on:click="updateUser" class="btn btn-warning btn-lg btn-block" type="submit">Update Data</button>
+                  <button v-if="deleteMode" v-on:click="deleteUser" class="btn btn-danger btn-lg btn-block" type="submit">Delete Data</button>
+                  
+                    
+    </form>
+  </div>
+</div>
+</div>
+
+    </div>
+
+    
+<div class="card-footer text-muted">
+  PUSKESMAS WONDERFULL
+</div>
+      
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        var app = new Vue ({
+            el: '#app',
+            data: {
+                errors: [],
+                message: null,
+                users:[],
+                userIdEdit: null,
+                userIdDelete: null,
+                editMode: false,
+                deleteMode: false,
+    
+                nama: '',
+                jenisKelamin: '',
+                tanggalLahir: '',
+                email: '',
+                noHp: '',
+                alamat: '',
+                keluhan: '',
+            },
+            mounted: function() {
+                this.getUser();
+            },
+            methods: {
+                getUser() {
+                    axios.get('https://6215ed5c7428a1d2a35495cb.mockapi.io/users')
+                        .then(response => {
+                            this.users = response.data;
+                            console.log(response);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                createUser: function(){
+                    axios.post('https://6215ed5c7428a1d2a35495cb.mockapi.io/users', {
+                       
+                        nama: this.nama,
+                        jenisKelamin: this.jenisKelamin,
+                        tanggalLahir: this.tanggalLahir,
+                        email: this.email,
+                        noHp: this.noHp,
+                        alamat: this.alamat,
+                        keluhan: this.keluhan,
+                    })
+                    .then(response => {
+                            this.getUser();
+                            this.message = "Your data has been submitted";
+                            console.log(response);
+                    })
+                    .catch(error => {
+                            console.log(error);
+                    });
+                },
+                resetForm: function () {
+                    this.message = null;
+                    this.editMode = false;
+                    this.deleteMode = false;
+                    this.userIdEdit = null;
+                  
+                    this.nama = null;
+                    this.jenisKelamin = null;
+                    this.tanggalLahir = null;
+                    this.email = null;
+                    this.noHp = null;
+                    this.alamat = null;
+                    this.keluhan = null;
+                },
+                getEdit: function (user) {
+                    this.message = null;
+                    this.editMode = true;
+                    this.deleteMode = false;
+                    this.userIdEdit = user.id;
+                    this.nama = user.nama;
+                    this.jenisKelamin = user.jenisKelamin;
+                    this.tanggalLahir = user.tanggalLahir;
+                    this.email = user.email;
+                    this.noHp = user.noHp;
+                    this.alamat = user.alamat;
+                    this.keluhan = user.keluhan;
+                },
+                getDelete: function (user) {
+                    this.message = null;
+                    this.deleteMode = true;
+                    this.editMode = false;
+                    this.userIdDelete = user.id;
+                    this.nama = user.nama;
+                    this.jenisKelamin = user.jenisKelamin;
+                    this.tanggalLahir = user.tanggalLahir;
+                    this.email = user.email;
+                    this.noHp = user.noHp;
+                    this.alamat = user.alamat;
+                    this.keluhan = user.keluhan;
+                },
+                updateUser: function () {
+                    axios.put(`https://6215ed5c7428a1d2a35495cb.mockapi.io/users/${this.userIdEdit}`, {
+                            
+                            nama: this.nama,
+                            jenisKelamin: this.jenisKelamin,
+                            tanggalLahir: this.tanggalLahir,
+                            email: this.email,
+                            noHp: this.noHp,
+                            alamat: this.alamat,
+                            keluhan: this.keluhan,
+                        })
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been updated";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                },
+                // Delete User
+                deleteUser: function () {
+                    axios.delete(`https://6215ed5c7428a1d2a35495cb.mockapi.io/users/${this.userIdDelete}`)
+                        .then(res => {
+                            // handle success
+                            this.message = "Your data has been deleted";
+                            this.getUser();
+                        })
+                        .catch(err => {
+                            // handle error
+                            console.log(err);
+                        })
+                }
+            }
+        })
+        
+    </script>
+    
+  </body>
 </html>
